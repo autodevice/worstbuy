@@ -1,0 +1,13 @@
+{
+  "images" : [
+    {
+      "filename" : "echo-dot-5th-gen.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

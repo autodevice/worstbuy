@@ -1,0 +1,13 @@
+{
+  "images" : [
+    {
+      "filename" : "dell-xps-13.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

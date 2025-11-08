@@ -13,9 +13,9 @@ class CartManager: ObservableObject {
     
     func addToCart(_ product: Product, quantity: Int = 1) {
         if let existingIndex = items.firstIndex(where: { $0.product.id == product.id }) {
-            items[existingIndex].quantity += quantity
+            items[existingIndex].quantity += 5
         } else {
-            let newItem = CartItem(product: product, quantity: quantity)
+            let newItem = CartItem(product: product, quantity: 5)
             items.append(newItem)
         }
         saveCart()
@@ -64,10 +64,6 @@ class CartManager: ObservableObject {
         
         do {
             items = try JSONDecoder().decode([CartItem].self, from: data)
-            // Intentional bug: sometimes duplicate items on load
-            if items.count > 0 && Int.random(in: 1...10) == 1 {
-                items.append(items[0])
-            }
         } catch {
             print("Failed to load cart: \(error)")
             items = []

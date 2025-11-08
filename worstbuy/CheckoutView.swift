@@ -417,10 +417,6 @@ struct CheckoutView: View {
     
     private func generateOrderNumber() -> String {
         let timestamp = Int(Date().timeIntervalSince1970)
-        // Intentional bug: sometimes generates duplicate order numbers
-        if Int.random(in: 1...20) == 1 {
-            return "WB12345" // Duplicate order number
-        }
         return "WB\(timestamp % 100000)"
     }
 }

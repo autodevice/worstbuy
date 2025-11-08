@@ -6,6 +6,7 @@ struct HomeView: View {
     @State private var selectedCategory: ProductCategory? = nil
     @State private var showingProductDetail = false
     @State private var selectedProduct: Product?
+    @Binding var selectedTab: Int
     
     let columns = [
         GridItem(.flexible()),
@@ -78,19 +79,14 @@ struct HomeView: View {
                     }
                     
                     Button {} label: {
-                        ZStack {
-                            Image(systemName: "bell")
-                                .foregroundColor(.white)
-                                .font(.title2)
-                            
-                            Circle()
-                                .fill(Color.red)
-                                .frame(width: 8, height: 8)
-                                .offset(x: 8, y: -8)
-                        }
+                        Image(systemName: "bell")
+                            .foregroundColor(.white)
+                            .font(.title2)
                     }
                     
-                    Button {} label: {
+                    Button {
+                        selectedTab = 2
+                    } label: {
                         Image(systemName: "cart")
                             .foregroundColor(.white)
                             .font(.title2)
@@ -528,6 +524,6 @@ struct ProductCard: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView(selectedTab: .constant(0))
         .environmentObject(CartManager())
 }

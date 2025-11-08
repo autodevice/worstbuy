@@ -59,8 +59,7 @@ class DataManager: ObservableObject {
         case .rating:
             return products.sorted { $0.rating > $1.rating }
         case .newest:
-            // Intentional bug: sometimes returns products in reverse order
-            return Int.random(in: 1...5) == 1 ? products.reversed() : products
+            return products
         }
     }
     

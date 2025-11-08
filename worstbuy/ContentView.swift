@@ -9,20 +9,23 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var cartManager = CartManager()
+    @State private var selectedTab = 0
     
     var body: some View {
-        TabView {
-            HomeView()
+        TabView(selection: $selectedTab) {
+            HomeView(selectedTab: $selectedTab)
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")
                 }
+                .tag(0)
             
             SearchView()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     Text("Search")
                 }
+                .tag(1)
             
             CartView()
                 .tabItem {
@@ -32,12 +35,14 @@ struct ContentView: View {
                         Text("\(cartManager.items.count)")
                     }
                 }
+                .tag(2)
             
             ProfileView()
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("Profile")
                 }
+                .tag(3)
         }
         .environmentObject(cartManager)
         .accentColor(Color(red: 0.0, green: 0.27, blue: 0.71))

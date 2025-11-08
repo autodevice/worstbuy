@@ -27,14 +27,7 @@ struct SearchView: View {
             product.price >= minPrice && product.price <= maxPrice
         }
         
-        let sortedProducts = dataManager.sortProducts(products, by: sortOption)
-        
-        // Intentional bug: sometimes filter returns empty results for valid searches
-        if !searchText.isEmpty && searchText.count > 3 && Int.random(in: 1...25) == 1 {
-            return []
-        }
-        
-        return sortedProducts
+        return dataManager.sortProducts(products, by: sortOption)
     }
     
     var body: some View {

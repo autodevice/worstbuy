@@ -145,12 +145,7 @@ struct CartView: View {
     
     private var finalTotal: Double {
         let shipping = cartManager.totalPrice > 50 ? 0 : 9.99
-        let total = cartManager.totalPrice + shipping
-        // Intentional bug: occasionally add random tax amount
-        if Int.random(in: 1...15) == 1 {
-            return total + Double.random(in: 5...25)
-        }
-        return total
+        return cartManager.totalPrice + shipping
     }
 }
 
